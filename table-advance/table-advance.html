@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Advance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="intro">
+        <h1>HTML table </h1>
+    </section>
+    <section class="learning-outcome">
+        <h1>Learning outcome:</h1>
+        <ul>
+            <li> An understanding of the accessibility issues associated with tables.</li>
+            <li> Adding captions to tables.</li>
+            <li> Better table structuring with head, body, and footer.</li>
+            <li> Creating further association between headers and cells with the scope, id, and headers attributes.</li>
+        </ul>
+    </section>
+    <section class="caption">
+        <h1>Adding caption to your table <code>&lt;caption&gt;</code></h1>
+        <p>The caption is meant to contain a description of a tablle content and you nest it
+            in<code>&lt;table&gt;</code></p>
+        <table>
+            <caption>
+                <code>&lt;caption&gt;</code>Dinosaurs in the Jurassic period <code>&lt;caption&gt;</code>
+            </caption>
+        </table>
+        <p>This is useful for all readers wishing to get a quick idea of whether the table is useful to them as they
+            scan the page, but particularly for blind users. Rather than have a screen reader read out the contents of
+            many cells just to find out what the table is about, the user can rely on a caption and then decide whether
+            or not to read the table in greater detail.</p>
+        <p><strong>A caption is place directly beneath the &lt;table&gt; tag </strong></p>
+    </section>
+    <section class="al-adding-caption">
+        <h2>Let's try this out, using a language teacher's school timetable as an example.</h2>
+        <ol>
+            <li>
+                Make a local copy of our <a
+                    href="https://github.com/mdn/learning-area/blob/main/html/tables/basic/timetable-fixed.html"
+                    target="_blank" rel="noopener noreferrer">timetable-fixed.html</a>
+            </li>
+            <li><a href="./time-table-example/timetable-fixed.html">timetable-fixed.html</a></li>
+            <li>
+                Add a suitable caption for the table.
+            </li>
+            <li>
+                Save your code and open it in a browser to see what it looks like.
+            </li>
+        </ol>
+    </section>
+    <section class="adding-structure">
+        <h1>Adding structure with &lt;thead&gt;, &lt;tbody&gt;, and &lt;tfoot&gt;</h1>
+        <p>As your tables get a bit more complex in structure, it is useful to give them more structural definition. One
+            clear way to do this is by using &lt;thead&gt;, &lt;tbody&gt;, and &lt;tfoot&gt;, which allow you to mark up
+            a header, body, and footer section for the table.</p>
+        <p>These elements don't necessarily make the table any more accessible to screen reader users. They don't result
+            in any visual enhancement on their own, however they are very useful for applying styling and layout
+            enhancements via CSS, which can improve accessibility. To give you some interesting examples, in the case of
+            a long table you could make the table header and footer repeat on every printed page, and you could make the
+            table body display on a single page and have the contents available by scrolling up and down.</p>
+        <h3>To use them, they should be included in the following order:</h3>
+        <ul>
+            <li>The &lt;thead&gt; element must wrap the part of the table that is the header — this is usually the first
+                row containing the column headings, but this is not necessarily always the case. If you are using
+                &lt;col&gt;/&lt;colgroup&gt; elements, the table header should come just below those.</li>
+            <li>The &lt;tbody&gt; element needs to wrap the main part of the table content that isn't the table header
+                or footer.</li>
+            <li>The &lt;tfoot&gt; element needs to wrap the part of the table that is the footer — this might be a final
+                row with items in the previous rows summed, for example.</li>
+        </ul>
+    </section>
+
+    <section class="activity">
+        <h2>Let's put these new elements into action.</h2>
+        <ol>
+            <li>First of all, make a local copy of <code>spending-record.html</code> and <code>minimal-table.css</code>
+                in a new folder.</li>
+
+            <li>Try putting the obvious headers row inside a <code>&lt;thead&gt;</code> element, the "SUM" row inside a
+                <code>&lt;tfoot&gt;</code> element, and the rest of the content inside a <code>&lt;tbody&gt;</code>
+                element.
+            </li>
+
+            <li>Next, add a <code>colspan</code> attribute to make the "SUM" cell span across the first four columns, so
+                the actual number appears at the bottom of the "Cost" column.</li>
+
+            <li>Let's add some simple extra styling to the table, to give you an idea of how useful these elements are
+                for applying CSS. Inside the head of your HTML document, you'll see an empty <code>&lt;style&gt;</code>
+                element. Inside this element, add the following lines of CSS code:
+                <pre><code>tbody {
+  font-size: 95%;
+  font-style: italic;
+}
+
+tfoot {
+  font-weight: bold;
+}</code></pre>
+            </li>
+
+            <li>Save and refresh, and have a look at the result. If the <code>&lt;tbody&gt;</code> and
+                <code>&lt;tfoot&gt;</code> elements weren't in place, you'd have to write much more complicated
+                selectors/rules to apply the same styling.
+            </li>
+        </ol>
+        <ol>
+            <a href="./adding-structure-example/spending-rec-prev.html">
+                <li>Before:</li>
+            </a>
+            <a href="./adding-structure-example/spending-record.html">
+                <li>After:</li>
+            </a>
+        </ol>
+    </section>
+    <section class="scope-attribute">
+        <h2>The <code>scope</code> attribute</h2>
+
+        <p>The <code>scope</code> attribute can be added to the <code>&lt;th&gt;</code> element to tell screen readers
+            exactly what cells the header is a header for — is it a header for the row it is in, or the column, for
+            example? Looking back to our spending record example from earlier on, you could unambiguously define the
+            column headers as column headers like this:</p>
+
+        <pre><code>&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;Purchase&lt;/th&gt;
+    &lt;th scope="col"&gt;Location&lt;/th&gt;
+    &lt;th scope="col"&gt;Date&lt;/th&gt;
+    &lt;th scope="col"&gt;Evaluation&lt;/th&gt;
+    &lt;th scope="col"&gt;Cost (€)&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;</code></pre>
+
+        <p>And each row could have a header defined like this (if we added row headers as well as column headers):</p>
+
+        <pre><code>&lt;tr&gt;
+  &lt;th scope="row"&gt;Haircut&lt;/th&gt;
+  &lt;td&gt;Hairdresser&lt;/td&gt;
+  &lt;td&gt;12/09&lt;/td&gt;
+  &lt;td&gt;Great idea&lt;/td&gt;
+  &lt;td&gt;30&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+
+        <p>Screen readers will recognize markup structured like this, and allow their users to read out the entire
+            column or row at once, for example.</p>
+
+        <p><code>scope</code> has two more possible values — <code>colgroup</code> and <code>rowgroup</code>. These are
+            used for headings that sit over the top of multiple columns or rows. If you look back at the "Items Sold
+            August 2016" table at the start of this section of the article, you'll see that the "Clothes" cell sits
+            above the "Trousers", "Skirts", and "Dresses" cells. All of these cells should be marked up as headers
+            (<code>&lt;th&gt;</code>), but "Clothes" is a heading that sits over the top and defines the other three
+            subheadings. "Clothes" therefore should get an attribute of <code>scope="colgroup"</code>, whereas the
+            others would get an attribute of <code>scope="col"</code>:</p>
+
+        <pre><code>&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th colspan="3" scope="colgroup"&gt;Clothes&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;Trousers&lt;/th&gt;
+    &lt;th scope="col"&gt;Skirts&lt;/th&gt;
+    &lt;th scope="col"&gt;Dresses&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;</code></pre>
+
+        <p>The same applies to headers for multiple grouped rows. Take another look at the "Items Sold August 2016"
+            table, this time focusing on the rows with the "Amsterdam" and "Utrecht" headers (<code>&lt;th&gt;</code>).
+            You'll notice that the "The Netherlands" header, also marked up as a <code>&lt;th&gt;</code> element, spans
+            both rows, being the heading for the other two subheadings. Therefore, <code>scope="rowgroup"</code> should
+            be specified on this header cell to help screen readers create the correct associations:</p>
+
+        <pre><code>&lt;tr&gt;
+  &lt;th rowspan="2" scope="rowgroup"&gt;The Netherlands&lt;/th&gt;
+  &lt;th scope="row"&gt;Amsterdam&lt;/th&gt;
+  &lt;td&gt;89&lt;/td&gt;
+  &lt;td&gt;34&lt;/td&gt;
+  &lt;td&gt;69&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th scope="row"&gt;Utrecht&lt;/th&gt;
+  &lt;td&gt;80&lt;/td&gt;
+  &lt;td&gt;12&lt;/td&gt;
+  &lt;td&gt;43&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+
+        <a href="./scope-example/scope.html">SCOPE EXAMPLE: </a>
+    </section>
+    <section class="id-headers-attributes">
+        <h2>The <code>id</code> and <code>headers</code> attributes</h2>
+
+        <p>An alternative to using the <code>scope</code> attribute is to use <code>id</code> and <code>headers</code>
+            attributes to create associations between data cells and header cells.</p>
+
+        <p>A <code>&lt;th&gt;</code> element can provide a heading for either a data cell (<code>&lt;td&gt;</code>) or,
+            in more complex tables, for another header cell (<code>&lt;th&gt;</code>). This allows you to create layered
+            or grouped headers, where one header describes several others.</p>
+
+        <p>The <code>headers</code> attribute is used to link a cell, <code>&lt;td&gt;</code> or
+            <code>&lt;th&gt;</code>, to one or more header cells. It takes a space-separated list of strings; the order
+            of strings does not matter. Each string must match the unique <code>id</code> of a <code>&lt;th&gt;</code>
+            element that the cell is associated with.
+        </p>
+
+        <p>This method gives your HTML table a more explicit definition of the position of each cell, based on the
+            headers for the column and the row it belongs to, kind of like a spreadsheet. For this to work well, your
+            table should include both column and row headers.</p>
+
+        <p>Let's look at a portion of the "Items Sold August 2016" example to see how to use the <code>id</code> and
+            <code>headers</code> attributes:
+        </p>
+
+        <ol>
+            <li>Add a unique <code>id</code> to each <code>&lt;th&gt;</code> element in the table.</li>
+
+            <li>For the header cells: Add a <code>headers</code> attribute to each <code>&lt;th&gt;</code> element that
+                acts as a subheading, that is, a header cell with another header above it. The value is the
+                <code>id</code> of the high-level heading. In our example, that's <code>"clothes"</code> for the column
+                headers and <code>"belgium"</code> for the row header.
+            </li>
+
+            <li>For the data cells: Add a <code>headers</code> attribute to each <code>&lt;td&gt;</code> element, and
+                add the <code>id</code>s of the associated <code>&lt;th&gt;</code> element(s) as a space-separated list.
+                You can proceed as you would in a spreadsheet: Find the data cell, then locate the row and column
+                headers that describe it. The order of the specified <code>id</code>s doesn't matter, but keeping it
+                consistent helps to keep it organized and improves readability of the code.</li>
+        </ol>
+
+        <pre><code>&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th id="clothes" colspan="3"&gt;Clothes&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th id="trousers" headers="clothes"&gt;Trousers&lt;/th&gt;
+    &lt;th id="skirts" headers="clothes"&gt;Skirts&lt;/th&gt;
+    &lt;th id="dresses" headers="clothes"&gt;Dresses&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;th id="belgium" rowspan="2"&gt;Belgium&lt;/th&gt;
+    &lt;th id="antwerp" headers="belgium"&gt;Antwerp&lt;/th&gt;
+    &lt;td headers="belgium antwerp clothes trousers"&gt;56&lt;/td&gt;
+    &lt;td headers="belgium antwerp clothes skirts"&gt;22&lt;/td&gt;
+    &lt;td headers="belgium antwerp clothes dresses"&gt;43&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th id="ghent" headers="belgium"&gt;Ghent&lt;/th&gt;
+    &lt;td headers="belgium ghent clothes trousers"&gt;41&lt;/td&gt;
+    &lt;td headers="belgium ghent clothes skirts"&gt;17&lt;/td&gt;
+    &lt;td headers="belgium ghent clothes dresses"&gt;35&lt;/td&gt;
+  &lt;/tr&gt;
+  <a href=""></a>
+&lt;/tbody&gt;</code></pre>
+        <a href="id-headere-example/id-header.html">ID-HEADER EXAMPLE</a>
+
+        <p>In this example:</p>
+        <ul>
+            <li>The <code>&lt;th&gt;</code> for <code>"Belgium"</code> uses <code>rowspan="2"</code> to span both
+                <code>"Antwerp"</code> and <code>"Ghent"</code>.
+            </li>
+
+            <li>The city header cells (<code>"Antwerp"</code> and <code>"Ghent"</code>) use the <code>headers</code>
+                attribute to reference <code>"belgium"</code> to show they belong to the Belgium group.</li>
+
+            <li>Each <code>&lt;td&gt;</code> includes a <code>headers</code> attribute for country
+                (<code>belgium</code>), city (<code>antwerp</code> or <code>ghent</code>), group (<code>clothes</code>),
+                and the specific clothing item (<code>trousers</code>, <code>skirts</code>, or <code>dresses</code>).
+            </li>
+        </ul>
+    </section>
+    <section class="active-learning">
+        <h2>Active learning: playing with scope and headers</h2>
+
+        <ol>
+            <li>For this final exercise, we'd like you to first make local copies of <code>items-sold.html</code> and
+                <code>minimal-table.css</code>, in a new directory.</li>
+
+            <li>Now try adding in the appropriate <code>scope</code> attributes to make this table more accessible.</li>
+
+            <li>Finally, try making another copy of the starter files, and this time make the table more accessible by
+                creating precise and explicit associations using <code>id</code> and <code>headers</code> attributes.
+            </li>
+        </ol>
+    </section>
+    <section>
+        <a href="structuring-planet/planet.html">Structuring A Planet Data Table</a>
+    </section>
+</body>
+
+</html>

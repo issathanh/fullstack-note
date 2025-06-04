@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope Attribute Examples</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .example {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+        }
+
+        .example h2 {
+            color: #2980b9;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .row-header {
+            background: linear-gradient(135deg, #27ae60, #229954) !important;
+            color: white;
+        }
+
+        .colgroup-header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+            color: white;
+        }
+
+        .rowgroup-header {
+            background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+            color: white;
+        }
+
+        td {
+            background: #f8f9fa;
+        }
+
+        tr:nth-child(even) td {
+            background: #e9ecef;
+        }
+
+        tr:hover td {
+            background: #fff3cd;
+        }
+
+        .code-note {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin: 0 2px;
+        }
+
+        .description {
+            background: #e8f6ff;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        /* Specific styling for the tbody/tfoot example */
+        .spending-example tbody {
+            font-size: 95%;
+            font-style: italic;
+        }
+
+        .spending-example tfoot {
+            font-weight: bold;
+        }
+
+        .spending-example tfoot td {
+            background: #f1c40f;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visual Examples of Scope Attributes</h1>
+
+    <div class="example">
+        <h2>1. Basic Column Headers with <span class="code-note">scope="col"</span></h2>
+        <div class="description">
+            Each column header tells screen readers it's the header for its entire column.
+        </div>
+        <table class="spending-example">
+            <thead>
+                <tr>
+                    <th scope="col">Purchase</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Evaluation</th>
+                    <th scope="col">Cost (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Haircut</td>
+                    <td>Hairdresser</td>
+                    <td>12/09</td>
+                    <td>Great idea</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>Lasagna</td>
+                    <td>Restaurant</td>
+                    <td>12/09</td>
+                    <td>Regrets</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td>Shoes</td>
+                    <td>Shoeshop</td>
+                    <td>13/09</td>
+                    <td>Big regrets</td>
+                    <td>65</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">SUM</td>
+                    <td>113</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="example">
+        <h2>2. Row Headers with <span class="code-note">scope="row"</span></h2>
+        <div class="description">
+            The first cell in each row acts as a header for that entire row.
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Evaluation</th>
+                    <th scope="col">Cost (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" class="row-header">Haircut</th>
+                    <td>Hairdresser</td>
+                    <td>12/09</td>
+                    <td>Great idea</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="row-header">Lasagna</th>
+                    <td>Restaurant</td>
+                    <td>12/09</td>
+                    <td>Regrets</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="row-header">Shoes</th>
+                    <td>Shoeshop</td>
+                    <td>13/09</td>
+                    <td>Big regrets</td>
+                    <td>65</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="example">
+        <h2>3. Column Group Headers with <span class="code-note">scope="colgroup"</span></h2>
+        <div class="description">
+            "Clothes" is a header that spans multiple columns and groups the sub-headers below it.
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3" scope="colgroup" class="colgroup-header">Clothes</th>
+                    <th scope="col">Accessories</th>
+                </tr>
+                <tr>
+                    <th scope="col">Trousers</th>
+                    <th scope="col">Skirts</th>
+                    <th scope="col">Dresses</th>
+                    <th scope="col">Bags</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>64</td>
+                    <td>16</td>
+                    <td>32</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td>42</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>25</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="example">
+        <h2>4. Row Group Headers with <span class="code-note">scope="rowgroup"</span></h2>
+        <div class="description">
+            "The Netherlands" spans multiple rows and acts as a group header for the cities below it.
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Country/City</th>
+                    <th scope="col">Trousers</th>
+                    <th scope="col">Skirts</th>
+                    <th scope="col">Dresses</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="2" scope="rowgroup" class="rowgroup-header">The Netherlands</th>
+                    <th scope="row" class="row-header">Amsterdam</th>
+                    <td>89</td>
+                    <td>34</td>
+                    <td>69</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="row-header">Utrecht</th>
+                    <td>80</td>
+                    <td>12</td>
+                    <td>43</td>
+                </tr>
+                <tr>
+                    <th rowspan="2" scope="rowgroup" class="rowgroup-header">Belgium</th>
+                    <th scope="row" class="row-header">Brussels</th>
+                    <td>56</td>
+                    <td>22</td>
+                    <td>43</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="row-header">Antwerp</th>
+                    <td>67</td>
+                    <td>18</td>
+                    <td>28</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="example">
+        <h2>Legend</h2>
+        <ul>
+            <li><strong>Blue headers:</strong> <span class="code-note">scope="col"</span> - Column headers</li>
+            <li><strong>Green headers:</strong> <span class="code-note">scope="row"</span> - Row headers</li>
+            <li><strong>Red headers:</strong> <span class="code-note">scope="colgroup"</span> - Column group headers</li>
+            <li><strong>Orange headers:</strong> <span class="code-note">scope="rowgroup"</span> - Row group headers</li>
+        </ul>
+        <p><strong>Note:</strong> The visual styling helps distinguish the different scope types, but the real benefit is for screen readers and accessibility - they can understand the relationship between headers and data cells.</p>
+    </div>
+<section class="id-headers-attributes">
+    <h2>The <code>id</code> and <code>headers</code> attributes</h2>
+    
+    <p>An alternative to using the <code>scope</code> attribute is to use <code>id</code> and <code>headers</code> attributes to create associations between data cells and header cells.</p>
+    
+    <p>A <code>&lt;th&gt;</code> element can provide a heading for either a data cell (<code>&lt;td&gt;</code>) or, in more complex tables, for another header cell (<code>&lt;th&gt;</code>). This allows you to create layered or grouped headers, where one header describes several others.</p>
+    
+    <p>The <code>headers</code> attribute is used to link a cell, <code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>, to one or more header cells. It takes a space-separated list of strings; the order of strings does not matter. Each string must match the unique <code>id</code> of a <code>&lt;th&gt;</code> element that the cell is associated with.</p>
+    
+    <p>This method gives your HTML table a more explicit definition of the position of each cell, based on the headers for the column and the row it belongs to, kind of like a spreadsheet. For this to work well, your table should include both column and row headers.</p>
+    
+    <p>Let's look at a portion of the "Items Sold August 2016" example to see how to use the <code>id</code> and <code>headers</code> attributes:</p>
+    
+    <ol>
+        <li>Add a unique <code>id</code> to each <code>&lt;th&gt;</code> element in the table.</li>
+        
+        <li>For the header cells: Add a <code>headers</code> attribute to each <code>&lt;th&gt;</code> element that acts as a subheading, that is, a header cell with another header above it. The value is the <code>id</code> of the high-level heading. In our example, that's <code>"clothes"</code> for the column headers and <code>"belgium"</code> for the row header.</li>
+        
+        <li>For the data cells: Add a <code>headers</code> attribute to each <code>&lt;td&gt;</code> element, and add the <code>id</code>s of the associated <code>&lt;th&gt;</code> element(s) as a space-separated list. You can proceed as you would in a spreadsheet: Find the data cell, then locate the row and column headers that describe it. The order of the specified <code>id</code>s doesn't matter, but keeping it consistent helps to keep it organized and improves readability of the code.</li>
+    </ol>
+    
+    <pre><code>&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th id="clothes" colspan="3"&gt;Clothes&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th id="trousers" headers="clothes"&gt;Trousers&lt;/th&gt;
+    &lt;th id="skirts" headers="clothes"&gt;Skirts&lt;/th&gt;
+    &lt;th id="dresses" headers="clothes"&gt;Dresses&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;th id="belgium" rowspan="2"&gt;Belgium&lt;/th&gt;
+    &lt;th id="antwerp" headers="belgium"&gt;Antwerp&lt;/th&gt;
+    &lt;td headers="belgium antwerp clothes trousers"&gt;56&lt;/td&gt;
+    &lt;td headers="belgium antwerp clothes skirts"&gt;22&lt;/td&gt;
+    &lt;td headers="belgium antwerp clothes dresses"&gt;43&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th id="ghent" headers="belgium"&gt;Ghent&lt;/th&gt;
+    &lt;td headers="belgium ghent clothes trousers"&gt;41&lt;/td&gt;
+    &lt;td headers="belgium ghent clothes skirts"&gt;17&lt;/td&gt;
+    &lt;td headers="belgium ghent clothes dresses"&gt;35&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;</code></pre>
+    
+    <p>In this example:</p>
+    <ul>
+        <li>The <code>&lt;th&gt;</code> for <code>"Belgium"</code> uses <code>rowspan="2"</code> to span both <code>"Antwerp"</code> and <code>"Ghent"</code>.</li>
+        
+        <li>The city header cells (<code>"Antwerp"</code> and <code>"Ghent"</code>) use the <code>headers</code> attribute to reference <code>"belgium"</code> to show they belong to the Belgium group.</li>
+        
+        <li>Each <code>&lt;td&gt;</code> includes a <code>headers</code> attribute for country (<code>belgium</code>), city (<code>antwerp</code> or <code>ghent</code>), group (<code>clothes</code>), and the specific clothing item (<code>trousers</code>, <code>skirts</code>, or <code>dresses</code>).</li>
+    </ul>
+</section>
+</body>
+</html>

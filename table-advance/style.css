@@ -1,0 +1,336 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Section styling */
+section {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 2rem auto;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Section decorative elements */
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #9b59b6, #e74c3c, #f39c12);
+}
+
+/* Intro section */
+.intro {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    margin-top: 0;
+}
+
+.intro h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+/* Learning outcome section */
+.learning-outcome {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    border-left: 5px solid #2ecc71;
+}
+
+.learning-outcome h1 {
+    color: #27ae60;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.learning-outcome h1::before {
+    content: '🎯';
+    font-size: 1.5rem;
+}
+
+/* Caption section */
+.caption {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border-left: 5px solid #e67e22;
+}
+
+.caption h1 {
+    color: #d35400;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Activity section */
+.al-adding-caption {
+    background: linear-gradient(135deg, #a8e6cf 0%, #dcedc8 100%);
+    border-left: 5px solid #27ae60;
+}
+
+.al-adding-caption h2 {
+    color: #27ae60;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.al-adding-caption h2::before {
+    content: '💻';
+    font-size: 1.3rem;
+}
+
+/* Typography */
+h1, h2 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* Code styling */
+code {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+    font-size: 0.95em;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    margin: 0 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+code::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #3498db, #e74c3c);
+    border-radius: 6px 6px 0 0;
+}
+
+/* List styling */
+ul, ol {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+/* Custom bullet points for ul */
+ul li::marker {
+    content: '▶ ';
+    color: #3498db;
+    font-weight: bold;
+}
+
+/* Custom numbers for ol */
+ol {
+    list-style: none;
+    counter-reset: step-counter;
+}
+
+ol li {
+    counter-increment: step-counter;
+    padding-left: 3rem;
+    position: relative;
+}
+
+ol li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #3498db;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+/* Link styling */
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3498db, #e74c3c);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+a:hover {
+    background: rgba(52, 152, 219, 0.1);
+    transform: translateY(-1px);
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* External link icon */
+a[target="_blank"]::before {
+    content: '🔗 ';
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+/* Table styling for the caption example */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+caption {
+    background: #34495e;
+    color: white;
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Strong text styling */
+strong {
+    color: #e74c3c;
+    font-weight: 700;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    border-left: 3px solid #e74c3c;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    section {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    .intro h1 {
+        font-size: 2.2rem;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    ul, ol {
+        margin-left: 1.5rem;
+    }
+    
+    ol li {
+        padding-left: 2.5rem;
+    }
+    
+    ol li::before {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro h1 {
+        font-size: 1.8rem;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+    
+    code {
+        font-size: 0.85em;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(52, 152, 219, 0.2);
+    color: #2c3e50;
+}

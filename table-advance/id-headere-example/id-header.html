@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID and Headers Attributes Example</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .example {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 2px solid #34495e;
+            position: relative;
+        }
+
+        th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* Different colors for different header types */
+        th[id="clothes"] {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        th[id="trousers"], th[id="skirts"], th[id="dresses"] {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+
+        th[id="belgium"] {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+        }
+
+        th[id="antwerp"], th[id="ghent"] {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+
+        td {
+            background: #f8f9fa;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        tr:hover td {
+            background: #fff3cd;
+            transform: scale(1.02);
+            transition: all 0.2s ease;
+        }
+
+        /* Empty cells styling */
+        th:empty {
+            background: #ecf0f1;
+            border: 2px solid #bdc3c7;
+        }
+
+        .legend {
+            background: #e8f6ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin-top: 2rem;
+        }
+
+        .legend h3 {
+            color: #2980b9;
+            margin-bottom: 1rem;
+        }
+
+        .legend ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .legend li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .legend .red { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
+        .legend .orange { background: linear-gradient(135deg, #f39c12, #e67e22); color: white; }
+        .legend .green { background: linear-gradient(135deg, #27ae60, #229954); color: white; }
+        .legend .purple { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; }
+
+        .code-display {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .explanation {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            margin: 1rem 0;
+        }
+
+        .explanation h4 {
+            color: #495057;
+            margin-bottom: 1rem;
+        }
+
+        .explanation p {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>ID and Headers Attributes - Visual Example</h1>
+
+    <div class="example">
+        <h2>Items Sold August 2016 - Belgium Region</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th id="clothes" colspan="3">Clothes</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th id="trousers" headers="clothes">Trousers</th>
+                    <th id="skirts" headers="clothes">Skirts</th>
+                    <th id="dresses" headers="clothes">Dresses</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th id="belgium" rowspan="2">Belgium</th>
+                    <th id="antwerp" headers="belgium">Antwerp</th>
+                    <td headers="belgium antwerp clothes trousers">56</td>
+                    <td headers="belgium antwerp clothes skirts">22</td>
+                    <td headers="belgium antwerp clothes dresses">43</td>
+                </tr>
+                <tr>
+                    <th id="ghent" headers="belgium">Ghent</th>
+                    <td headers="belgium ghent clothes trousers">41</td>
+                    <td headers="belgium ghent clothes skirts">17</td>
+                    <td headers="belgium ghent clothes dresses">35</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="explanation">
+        <h4>How the ID and Headers Attributes Work:</h4>
+        <p><strong>Each data cell explicitly declares its relationship to headers:</strong></p>
+        <p>• The number <strong>56</strong> has: <span class="code-display">headers="belgium antwerp clothes trousers"</span></p>
+        <p>• This tells screen readers: "This cell represents the number of trousers sold in Antwerp, Belgium, which falls under the clothes category"</p>
+        <p>• The order of IDs doesn't matter, but consistency helps code readability</p>
+        <p>• Each header cell with an <span class="code-display">id</span> can be referenced by data cells or other headers</p>
+    </div>
+
+    <div class="legend">
+        <h3>Header Hierarchy & Colors:</h3>
+        <ul>
+            <li class="red">🔴 <span class="code-display">id="clothes"</span> - Top-level group header (spans 3 columns)</li>
+            <li class="orange">🟠 <span class="code-display">id="trousers"</span>, <span class="code-display">id="skirts"</span>, <span class="code-display">id="dresses"</span> - Product headers (reference "clothes")</li>
+            <li class="green">🟢 <span class="code-display">id="belgium"</span> - Country header (spans 2 rows)</li>
+            <li class="purple">🟣 <span class="code-display">id="antwerp"</span>, <span class="code-display">id="ghent"</span> - City headers (reference "belgium")</li>
+        </ul>
+    </div>
+
+    <div class="explanation">
+        <h4>Key Features Demonstrated:</h4>
+        <p>• <strong>Empty cells:</strong> Gray cells create proper table structure</p>
+        <p>• <strong>Column spanning:</strong> "Clothes" spans 3 columns using <span class="code-display">colspan="3"</span></p>
+        <p>• <strong>Row spanning:</strong> "Belgium" spans 2 rows using <span class="code-display">rowspan="2"</span></p>
+        <p>• <strong>Header relationships:</strong> Sub-headers reference parent headers via <span class="code-display">headers</span> attribute</p>
+        <p>• <strong>Data associations:</strong> Each data cell lists all relevant header IDs</p>
+    </div>
+
+    <div class="explanation">
+        <h4>Screen Reader Benefits:</h4>
+        <p>When a screen reader encounters the cell with value "22", it would announce:</p>
+        <p><em>"Belgium, Antwerp, Clothes, Skirts: 22"</em></p>
+        <p>This provides complete context without requiring the user to navigate around the table to understand what the number represents.</p>
+    </div>
+
+</body>
+</html>
